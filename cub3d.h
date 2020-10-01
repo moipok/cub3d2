@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:54:24 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 19:41:04 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/01 23:00:54 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ int					error_setdata0(t_flags *flag, t_data *img);
 int					error_setdata1(t_flags *flag, t_data *img);
 int					error_setdatar1(t_flags *flag, t_data *img);
 int					error_setdatar777(t_flags *flag, t_data *img);
+int					error_setdatar99(t_flags *flag, t_data *img);
 int					error_malloc2(t_data *img, char **arr);
 int					error_malloc3(t_data *img, char **arr, char **new, int i);
 int					error_inside(t_flags *flag, t_data *img, char **arr, int i);

@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:54:10 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 19:48:25 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/01 23:23:24 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,27 @@ void	ft_persetdata(t_data *img, t_flags *flag, char *line)
 	freemass(tmp);
 }
 
+void	postparser(t_data *img, t_flags *flag, t_list *list, int fd)
+{
+	close(fd);
+	img->map = ft_bigarr(ft_create_arr(list, flag, img), img);
+	ft_checkmap(img->map, img);
+	if (!(img->spr = malloc(sizeof(t_sprite) * img->num)))
+		exit(pritnerror(freexmp5(img)));
+}
+
+int		ft_openfile(char *argv, t_flags *flag)
+{
+	int fd;
+
+	errno = 0;
+	if ((fd = open(argv, O_RDWR)) <= 0)
+		exit(pritnerror(999));
+	if (ft_errnocheck(errno, flag, fd))
+		exit(0);
+	return (fd);
+}
+
 void	ft_parser(char **argv, t_data *img)
 {
 	int			fd;
@@ -57,15 +78,12 @@ void	ft_parser(char **argv, t_data *img)
 	t_list		*list;
 	t_flags		*flag;
 
+	img->coef = 1;
 	list = NULL;
-	errno = 0;
 	if (!(flag = malloc(sizeof(t_flags))))
 		exit(pritnerror(0));
 	ft_cleanflag(flag);
-	if ((fd = open(argv[1], O_RDWR)) <= 0)
-		exit(pritnerror(999));
-	if (ft_errnocheck(errno, flag, fd))
-		exit(0);
+	fd = ft_openfile(argv[1], flag);
 	while (get_next_line(fd, &line))
 	{
 		if (line == NULL || line[0] == '\0')
@@ -75,23 +93,9 @@ void	ft_parser(char **argv, t_data *img)
 		else if (line[0])
 			ft_persetdata(img, flag, line);
 	}
-	if (line == NULL || line[0] == '\0')
-	{
-		if (fl_sumflag(flag) < 7)
-		{
-			free(flag);
-			ft_putstr_fd("ERROR\nFILE DATA\n", 2);
-			exit(0);
-		}
-	}
-	else 
+	if (fl_sumflag(flag) < 7)
+		exit(pritnerror(error_setdatar99(flag, img)));
+	else
 		ft_lstadd_back(&list, ft_lstnew(line));
-	close(fd);
-	img->map = ft_bigarr(ft_create_arr(list, flag, img), img);
-	ft_checkmap(img->map, img);
-	if (!(img->spr = malloc(sizeof(t_sprite) * img->num)))
-	{
-		printf("dsdfsdfs\n");
-		exit(pritnerror(freexmp5(img)));
-	}
+	postparser(img, flag, list, fd);
 }

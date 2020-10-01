@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 23:41:42 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/09/29 09:52:38 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/01 22:33:41 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		freexmp7(t_data *img)
 	return (12);
 }
 
-int		ft_errnocheck(int er, t_flags *flag, int fd)//kjnj
+int		ft_errnocheck(int er, t_flags *flag, int fd)
 {
 	if (er == 13)
 	{

@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/30 10:46:05 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 21:45:34 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/01 22:37:28 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ int		checkmapside(char **arr)
 	if (arr == NULL || arr[0] == NULL)
 		return (0);
 	if (checkfirststr(arr[0]) == 0)
-		return(0);
+		return (0);
 	i = 0;
 	while (arr[i])
 	{
 		if (ft_strchr("0SWEN2", arr[i][0]) || checklast(arr[i]) == 0)
-			return(0);
+			return (0);
 		i++;
 	}
 	if ((i - 1 >= 0) && checkfirststr(arr[i - 1]) == 0)
-		return(0);
+		return (0);
 	if (checkinside(arr) == 0)
 		return (0);
 	return (1);

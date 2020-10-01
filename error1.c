@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 19:22:43 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/09/30 00:25:54 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/01 23:01:05 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		pritnerror1(int error)
 		DATA IS NO FULL\n", 2);
 	if (error == 999)
 		ft_putstr_fd("ERROR\nARGUMENTS\n", 2);
+	if (error == 99)
+		ft_putstr_fd("ERROR\nFILE DATA\n", 2);
 	return (0);
 }
 
