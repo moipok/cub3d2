@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:54:31 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/09/21 04:25:47 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/02 05:47:57 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_data	*ft_w(t_data *img)
 	double x;
 	double y;
 
-	x = img->x + 0.2 * cos(img->mainangle);
-	y = img->y + 0.2 * sin(img->mainangle);
+	x = img->x + 0.15 * cos(img->mainangle);
+	y = img->y + 0.15 * sin(img->mainangle);
 	if (img->map[(int)x][(int)y] != '1' && \
 	img->map[(int)x][(int)y] != '\0')
 	{

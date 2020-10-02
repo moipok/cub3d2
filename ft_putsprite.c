@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:23:45 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 20:45:01 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/02 06:02:35 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	somefun(t_data *img, int *i)
 {
 	if (img->map[(int)img->mapx][(int)img->mapy] == '2' && \
 	check_elem(img, img->spr, \
-	(sqrt(pow((img->x - (int)img->mapx + 0.5), 2) \
-	+ pow((img->y - (int)img->mapy + 0.5), 2)))) == 0)
+	(sqrt(pow((img->x - (int)img->mapx - 0.5), 2) \
+	+ pow((img->y - (int)img->mapy - 0.5), 2)))) == 0)
 	{
 		img->spr[*i].x = (int)img->mapx + 0.5;
 		img->spr[*i].y = (int)img->mapy + 0.5;

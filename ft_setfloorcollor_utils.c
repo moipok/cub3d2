@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 01:51:28 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/09/29 00:56:16 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/02 06:05:35 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,21 @@ int		countlenarr(char **arr)
 	return (len);
 }
 
+int		ft_strlast(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i + 1])
+			i++;
+		else
+			return (i);
+	}
+	return (i);
+}
+
 char	*ft_dostr(char **arr)
 {
 	int		i;
@@ -53,6 +68,11 @@ char	*ft_dostr(char **arr)
 	i = 0;
 	while (arr[i])
 	{
+		if (ft_isdigit(str[ft_strlast(str)]) && ft_isdigit(arr[i][0]))
+		{
+			free(str);
+			return (NULL);
+		}
 		ft_strlcat(str, arr[i], -1);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:55:14 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/09/30 22:34:03 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/01 23:57:04 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,21 @@ void	pixelcount(t_data *img, double c, int *i, double angle1)
 	*i = *i + 1;
 }
 
+void	dostep(double *c, double x, double y)
+{
+	double xx;
+	double yy;
+
+	xx = x - (int)x;
+	yy = y - (int)y;
+	if (xx > 0.3 && xx < 0.7 && yy > 0.3 && yy < 0.7)
+		*c = *c + 0.3;
+	else if (xx > 0.1 && xx < 0.9 && yy > 0.1 && yy < 0.9)
+		*c = *c + 0.1;
+	else
+		*c = *c + 0.01;
+}
+
 t_data	*ft_putcol(t_data *img)
 {
 	double	c;
@@ -73,15 +88,15 @@ t_data	*ft_putcol(t_data *img)
 	int		i;
 
 	angle1 = img->mainangle - M_PI / 6;
-	if (!(img->deep = malloc(sizeof(double) * (img->r1 / img->coef + 5))))
+	if (!(img->deep = malloc(sizeof(double) * (img->r1 / img->coef + 3))))
 		exit(pritnerror(freexmp4(img)));
 	i = 0;
 	while (angle1 < img->mainangle + M_PI / 6)
 	{
 		c = 0.001;
 		while (wallfounder(img, c, angle1) != 1)
-			c = c + 0.03;
-		c = c - 0.03;
+			dostep(&c, img->mapx, img->mapy);
+		c = c - 0.01;
 		while (wallfounder(img, c, angle1) != 1)
 			c = c + 0.002;
 		pixelcount(img, c, &i, angle1);

@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:54:10 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 23:23:24 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/01 23:58:34 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_parser(char **argv, t_data *img)
 	t_list		*list;
 	t_flags		*flag;
 
-	img->coef = 1;
+	img->coef = 2;
 	list = NULL;
 	if (!(flag = malloc(sizeof(t_flags))))
 		exit(pritnerror(0));

@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 20:00:44 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 19:42:25 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/02 06:00:24 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int		check_elem(t_data *img, t_sprite *spr, double s)
 	x = img->mapx;
 	y = img->mapy;
 	i = 0;
-	if (sqrt(pow((x - (int)x - 0.5), 2) \
-	+ pow((y - (int)y - 0.5), 2)) > 0.3 && s < 1)
+	if (s < 0.8)
 		return (1);
 	while (i < img->num)
 	{
