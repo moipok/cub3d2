@@ -30,6 +30,8 @@ int		ft_parsercolor(char *str, int *rgb)
 		return (0);
 	rgb[2] = ft_atoi(str + i);
 	i += ft_intlenn(rgb[2]);
+	if (str[i] != '\0')
+		return (0);
 	free(str);
 	return (1);
 }

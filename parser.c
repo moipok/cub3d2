@@ -44,7 +44,7 @@ void	ft_persetdata(t_data *img, t_flags *flag, char *line)
 
 	if (!(tmp = ft_split(line, ' ')))
 		exit(pritnerror(0));
-	setdata(tmp, img, flag);
+	setdata(tmp, img, flag, line);
 	img->flag = flag;
 	free(line);
 	freemass(tmp);
@@ -78,7 +78,7 @@ void	ft_parser(char **argv, t_data *img)
 	t_list		*list;
 	t_flags		*flag;
 
-	img->coef = 2;
+	img->coef = 1;
 	list = NULL;
 	if (!(flag = malloc(sizeof(t_flags))))
 		exit(pritnerror(0));
@@ -86,9 +86,9 @@ void	ft_parser(char **argv, t_data *img)
 	fd = ft_openfile(argv[1], flag);
 	while (get_next_line(fd, &line))
 	{
-		if (line == NULL || line[0] == '\0')
+		if (line == NULL)
 			free(line);
-		else if (fl_sumflag(flag) > 7 && line[0] != '\0')
+		else if (fl_sumflag(flag) > 7)
 			ft_lstadd_back(&list, ft_lstnew(line));
 		else if (line[0])
 			ft_persetdata(img, flag, line);

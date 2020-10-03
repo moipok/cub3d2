@@ -52,6 +52,9 @@ int			ft_setr(t_data *img, t_flags *flag, char **str)
 		exit(pritnerror(error_setdatar1(flag, img)));
 	img->r1 = ft_atoi(str[1]);
 	img->r2 = ft_atoi(str[2]);
+	if (str[1][ft_intlenn(img->r1)] != '\0' ||\
+	str[2][ft_intlenn(img->r2)] != '\0' || str[3] != NULL)
+		exit(pritnerror(error_setdatar1(flag, img)));
 	if (img->r1 < 0 || img->r2 < 0)
 		exit(pritnerror(error_setdatar1(flag, img)));
 	mlx_get_screen_size(img->mlx, &sizex, &sizey);
@@ -62,26 +65,26 @@ int			ft_setr(t_data *img, t_flags *flag, char **str)
 	return (1);
 }
 
-void		setdata(char **str, t_data *img, t_flags *flag)
+void		setdata(char **str, t_data *img, t_flags *flag, char *line)
 {
 	flag->allflag = fl_sumflag(flag);
 	if (str[0] == NULL)
-		freemass(str);
-	else if (str[0][0] == 'R' && !flag->r1flag)
+		exit(pritnerror(error_setdatar777(flag, img)));
+	else if (str[0][0] == 'R' && !flag->r1flag && str[0][1] == '\0')
 		flag->r1flag = ft_setr(img, flag, str);
 	else if (str[0][0] == 'N')
-		img->no = setno(str, flag, img);
+		img->no = setno(str, flag, img, line);
 	else if (str[0][0] == 'S' && str[0][1] == 'O' && !flag->soflag)
-		img->so = setso(str, flag, img);
+		img->so = setso(str, flag, img, line);
 	else if (str[0][0] == 'S' && ft_strlen(str[0]) == 1 && !flag->spriteflag)
-		img->sprite = setsprite(str, flag, img);
+		img->sprite = setsprite(str, flag, img, line);
 	else if (str[0][0] == 'W')
-		img->we = setwe(str, flag, img);
+		img->we = setwe(str, flag, img, line);
 	else if (str[0][0] == 'E')
-		img->ea = setea(str, flag, img);
-	else if (str[0][0] == 'F' && !flag->floorflag)
+		img->ea = setea(str, flag, img, line);
+	else if (str[0][0] == 'F' && !flag->floorflag && str[0][1] == '\0')
 		img->floor = setfc('F', flag, str, img);
-	else if (str[0][0] == 'C' && !flag->cellarflag)
+	else if (str[0][0] == 'C' && !flag->cellarflag && str[0][1] == '\0')
 		img->cellar = setfc('C', flag, str, img);
 	else
 		exit(pritnerror(error_setdatar777(flag, img)));

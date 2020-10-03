@@ -12,72 +12,112 @@
 
 #include "cub3d.h"
 
-char		*setno(char **str, t_flags *flag, t_data *img)
+char		*setno(char **str, t_flags *flag, t_data *img, char *line)
 {
-	char *no;
+	char	*no;
+	int		i;
 
-	if (str[0][1] == 'O' && !flag->noflag)
+	if (str[0][1] == 'O' && !flag->noflag && str[0][2] == '\0')
 	{
-		no = ft_strdup(str[1]);
+		i = 0;
+		while (line[i] != 'O')
+			i++;
+		i++;
+		while (line[i] == ' ')
+			i++;
+		no = ft_strdup(line + i);
+		no = cut_spases(no);
 		flag->noflag = 1;
 	}
 	else
-		exit(error_setdata(flag, img));
+		exit(pritnerror(error_setdatar777(flag, img)));
 	return (no);
 }
 
-char		*setwe(char **str, t_flags *flag, t_data *img)
+char		*setwe(char **str, t_flags *flag, t_data *img, char *line)
 {
-	char *we;
+	char	*we;
+	int		i;
 
-	if (str[0][1] == 'E' && !flag->weflag)
+	if (str[0][1] == 'E' && !flag->weflag && str[0][2] == '\0')
 	{
-		we = ft_strdup(str[1]);
+		i = 0;
+		while (line[i] != 'E')
+			i++;
+		i++;
+		while (line[i] == ' ')
+			i++;
+		we = ft_strdup(line + i);
+		we = cut_spases(we);
 		flag->weflag = 1;
 	}
 	else
-		exit(error_setdata(flag, img));
+		exit(pritnerror(error_setdatar777(flag, img)));
 	return (we);
 }
 
-char		*setea(char **str, t_flags *flag, t_data *img)
+char		*setea(char **str, t_flags *flag, t_data *img, char *line)
 {
-	char *ea;
+	char	*ea;
+	int		i;
 
-	if (str[0][1] == 'A' && !flag->eaflag)
+	if (str[0][1] == 'A' && !flag->eaflag && str[0][2] == '\0')
 	{
-		ea = ft_strdup(str[1]);
+		i = 0;
+		while (line[i] != 'A')
+			i++;
+		i++;
+		while (line[i] == ' ')
+			i++;
+		ea = ft_strdup(line + i);
+		ea = cut_spases(ea);
 		flag->eaflag = 1;
 	}
 	else
-		exit(error_setdata(flag, img));
+		exit(pritnerror(error_setdatar777(flag, img)));
 	return (ea);
 }
 
-char		*setso(char **str, t_flags *flag, t_data *img)
+char		*setso(char **str, t_flags *flag, t_data *img, char *line)
 {
-	char *so;
+	char	*so;
+	int		i;
 
-	if (!flag->soflag)
+	if (!flag->soflag && str[0][2] == '\0')
 	{
-		so = ft_strdup(str[1]);
+		i = 0;
+		while (line[i] != 'O')
+			i++;
+		i++;
+		while (line[i] == ' ')
+			i++;
+		so = ft_strdup(line + i);
+		so = cut_spases(so);
 		flag->soflag = 1;
 	}
 	else
-		exit(error_setdata(flag, img));
+		exit(pritnerror(error_setdatar777(flag, img)));
 	return (so);
 }
 
-char		*setsprite(char **str, t_flags *flag, t_data *img)
+char		*setsprite(char **str, t_flags *flag, t_data *img, char *line)
 {
-	char *sprite;
+	char	*sprite;
+	int		i;
 
-	if (!flag->spriteflag)
+	if (!flag->spriteflag && str[0][1] == '\0')
 	{
-		sprite = ft_strdup(str[1]);
+		i = 0;
+		while (line[i] != 'S')
+			i++;
+		i++;
+		while (line[i] == ' ')
+			i++;
+		sprite = ft_strdup(line + i);
+		sprite = cut_spases(sprite);
 		flag->spriteflag = 1;
 	}
 	else
-		exit(error_setdata(flag, img));
+		exit(pritnerror(error_setdatar777(flag, img)));
 	return (sprite);
 }
