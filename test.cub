@@ -2,8 +2,12 @@
 NO   ./text/purplestone.xpm 
 
 WE ./text/greystone.xpm
+
 SO    ./text/bluestone.xpm   
-EA   ./text/redbrick.xpm            
+
+EA   ./text/redbrick.xpm  
+
+
 C  146, 191, 255
 
 S   ./text/coin1   .xpm 

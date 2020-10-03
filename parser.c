@@ -92,6 +92,8 @@ void	ft_parser(char **argv, t_data *img)
 			ft_lstadd_back(&list, ft_lstnew(line));
 		else if (line[0])
 			ft_persetdata(img, flag, line);
+		else
+			free(line);
 	}
 	if (fl_sumflag(flag) < 7)
 		exit(pritnerror(error_setdatar99(flag, img)));
