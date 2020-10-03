@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:54:24 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 23:00:54 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/03 08:36:44 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,5 +197,5 @@ void				ft_setsize(unsigned char *s, t_data *img);
 void				ft_setr1(unsigned char *s, int r);
 int					checkmapside(char **arr);
 int					error_map(t_data *img, char **arr);
-
+void				dostep1(double *c, double x, double y, double angle);
 #endif

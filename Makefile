@@ -9,7 +9,7 @@ SRCS = main.c get_next_line.c get_next_line_utils.c \
 		parser_utils_1.c ft_putsprite.c inittexture.c \
 		error1.c error2.c error3.c error4.c error5.c \
 		ft_setfloorcollor_utils.c somefree.c mybmp.c \
-		mybmp_utils.c put_screen.c mapcheck.c
+		mybmp_utils.c put_screen.c mapcheck.c stepdda.c 
 
 SRCO = main.o get_next_line.o get_next_line_utils.o \
 		parser.o ft_move.o put_window.o \
@@ -20,7 +20,7 @@ SRCO = main.o get_next_line.o get_next_line_utils.o \
 		parser_utils_1.o ft_putsprite.o inittexture.o \
 		error1.o error2.o error3.o error4.o error5.o \
 		ft_setfloorcollor_utils.o somefree.o mybmp.o \
-		mybmp_utils.o put_screen.o mapcheck.o
+		mybmp_utils.o put_screen.o mapcheck.o stepdda.o 
 
 
 all: $(SRCO)

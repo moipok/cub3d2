@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:55:19 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 23:02:52 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/03 09:19:13 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ int			ft_setr(t_data *img, t_flags *flag, char **str)
 	img->r2 = ft_atoi(str[2]);
 	if (img->r1 < 0 || img->r2 < 0)
 		exit(pritnerror(error_setdatar1(flag, img)));
-	if (img->r1 < 176)
-		img->r1 = 176;
-	if (img->r2 < 144)
-		img->r2 = 144;
 	mlx_get_screen_size(img->mlx, &sizex, &sizey);
 	if (img->r1 > sizex)
 		img->r1 = sizex;

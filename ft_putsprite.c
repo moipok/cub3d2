@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:23:45 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/02 06:02:35 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/03 08:49:35 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_putsprite(t_data *img)
 		while (wallfounder(img, c, angle1) != 1)
 		{
 			somefun(img, &i);
-			c = c + 0.5;
+			dostep1(&c, img->mapx, img->mapy, angle1);
 		}
 		angle1 += 5 * M_PI / (img->r1 * 3);
 	}
