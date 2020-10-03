@@ -6,7 +6,7 @@
 /*   By: fbarbera <login@student.21-school.ru>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 19:55:14 by fbarbera          #+#    #+#             */
-/*   Updated: 2020/10/01 23:57:04 by fbarbera         ###   ########.fr       */
+/*   Updated: 2020/10/03 08:24:16 by fbarbera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,66 @@ void	pixelcount(t_data *img, double c, int *i, double angle1)
 	*i = *i + 1;
 }
 
+void	dostep1(double *c, double x, double y, double angle)
+{
+	double xx;
+	double yy;
+
+	if ((angle > 0 && angle <= M_PI_2) ||\
+	(angle > 0 + 2 * M_PI && angle <= M_PI_2 + 2 * M_PI))
+	{
+		xx = (((int)x - x + 1) / cos(angle));
+		yy = (((int)y - y + 1) / sin(angle));
+	}
+	else if (angle > M_PI_2 && angle < M_PI)
+	{
+		yy = (((int)y - y + 1) / sin(angle));
+		xx = (x - (int)x) / (cos(correctangle(angle)));
+		if (fabs(xx) == 0)
+			yy = fabs(yy) + 0.000001;
+		else if (fabs(yy) == 0)
+			xx = fabs(xx) + 0.000001;
+		else if (fabs(xx) < fabs(yy))
+			xx = fabs(xx) + 0.000001;
+		else
+			yy = fabs(yy) + 0.000001;
+	}
+	else if (angle <= -M_PI_2 + 2 * M_PI && angle >= M_PI)
+	{
+		xx = (x - (int)x) / (cos(correctangle(angle)));
+		yy = (y - (int)y) / (sin(correctangle(angle)));
+		if (fabs(xx) == 0)
+			yy = fabs(yy) + 0.000001;
+		else if (fabs(yy) == 0)
+			xx = fabs(xx) + 0.000001;
+		else if (fabs(xx) < fabs(yy))
+			xx = fabs(xx) + 0.000001;
+		else
+			yy = fabs(yy) + 0.000001;
+	}
+	else
+	{
+		xx = (((int)x - x + 1) / cos(angle));
+		yy = (y - (int)y) / (sin(correctangle(angle)));
+		if (fabs(xx) == 0)
+			yy = fabs(yy) + 0.000001;
+		else if (fabs(yy) == 0)
+			xx = fabs(xx) + 0.000001;
+		else if (fabs(xx) < fabs(yy))
+			xx = fabs(xx) + 0.000001;
+		else
+			yy = fabs(yy) + 0.000001;
+	}
+	if (fabs(xx) == 0)
+		*c = *c + fabs(yy);
+	else if (fabs(yy) == 0)
+		*c = *c + fabs(xx);
+	else if (fabs(xx) < fabs(yy))
+		*c = *c + fabs(xx);
+	else
+		*c = *c + fabs(yy);
+}
+
 void	dostep(double *c, double x, double y)
 {
 	double xx;
@@ -78,7 +138,7 @@ void	dostep(double *c, double x, double y)
 	else if (xx > 0.1 && xx < 0.9 && yy > 0.1 && yy < 0.9)
 		*c = *c + 0.1;
 	else
-		*c = *c + 0.01;
+		*c = *c + 0.01 ;
 }
 
 t_data	*ft_putcol(t_data *img)
@@ -95,10 +155,10 @@ t_data	*ft_putcol(t_data *img)
 	{
 		c = 0.001;
 		while (wallfounder(img, c, angle1) != 1)
-			dostep(&c, img->mapx, img->mapy);
-		c = c - 0.01;
-		while (wallfounder(img, c, angle1) != 1)
-			c = c + 0.002;
+			dostep1(&c, img->mapx, img->mapy, angle1);
+		// c = c - 0.01;
+		// while (wallfounder(img, c, angle1) != 1)
+		// 	c = c + 0.002;
 		pixelcount(img, c, &i, angle1);
 		angle1 += M_PI * img->coef / (img->r1 * 3);
 	}
