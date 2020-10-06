@@ -200,4 +200,8 @@ void				ft_setr1(unsigned char *s, int r);
 int					checkmapside(char **arr);
 int					error_map(t_data *img, char **arr);
 void				dostep1(double *c, double x, double y, double angle);
+char				**ft_bigarr(char **arr, t_data *img);
+void				ft_persetdata(t_data *img, t_flags *flag, char *line);
+void				checktrash(char **arr);
+
 #endif

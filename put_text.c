@@ -19,6 +19,8 @@ void		ft_putonelinepixel(t_data *img)
 	i = 0;
 	while (i < img->r1)
 	{
+		if (img->r2 > 2)
+			my_mlx_pixel_put(img, i, img->r2 - 1, get_collordata(img, i, img->r2 - 2));
 		my_mlx_pixel_put(img, i, 0, get_collordata(img, i, 1));
 		i++;
 	}

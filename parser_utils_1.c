@@ -28,8 +28,8 @@ char	**ft_create_arr(t_list *list, t_flags *flag, t_data *img)
 		list = list->next;
 		i++;
 	}
-	i = 0;
 	ft_lstfree(&tmp);
+	checktrash(arr);
 	return (arr);
 }
 
